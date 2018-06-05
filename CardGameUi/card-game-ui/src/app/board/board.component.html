@@ -1,3 +1,9 @@
-<p>
-  board works!
-</p>
+<div class="container-fluid">
+  <ng-container *ngIf="board$ | async as board; else loading">
+    <app-deck-list [decks]=board.decks></app-deck-list>
+  </ng-container>
+
+  <ng-template #loading>
+    Loading Decks...
+  </ng-template>
+</div>
