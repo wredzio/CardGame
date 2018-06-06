@@ -38,12 +38,12 @@ namespace CardGameApp.Areas.Boards.Mappers
                             {
                                 Id = deck.Id,
                                 Cards = deck.Cards
-                                        .Select( card =>
+                                        .Select( card => card.IsShown ?
                                             new CardViewModel()
                                             {
                                                 Color = card.Color,
                                                 Rank = card.Rank
-                                            }).ToList()
+                                            } : null).ToList()
                             }).ToList()
             };
         }

@@ -11,15 +11,23 @@ namespace CardGameApp.Areas.Decks.Models
 {
     public class Deck
     {
-        public const int DeckSize = 52;
-        private static readonly List<Card> sortedDeck;
-
         public int Id { get; }
         public List<Card> Cards { get; set; }
 
-        static Deck()
+        public Deck(int id): this(id, null)
         {
-            sortedDeck = new List<Card>();
+            Cards = CreateSortedDeck();
+        }
+
+        public Deck(int id, List<Card> cards)
+        {
+            Id = id;
+            Cards = cards;
+        }
+
+        private List<Card> CreateSortedDeck()
+        {
+            var sortedDeck = new List<Card>();
             var colorValues = Util.GetValues<Color>();
             var rankValues = Util.GetValues<Rank>();
 
@@ -32,17 +40,7 @@ namespace CardGameApp.Areas.Decks.Models
                 }
             }
 
-        }
-
-        public Deck(int id): this(id, null)
-        {
-            Cards = sortedDeck;
-        }
-
-        public Deck(int id, List<Card> cards)
-        {
-            Id = id;
-            Cards = cards;
+            return sortedDeck;
         }
     }
 }

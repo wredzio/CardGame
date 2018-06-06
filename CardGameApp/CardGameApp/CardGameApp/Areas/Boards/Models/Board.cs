@@ -15,7 +15,7 @@ namespace CardGameApp.Areas.Boards.Models
         public Board()
         {
             Decks = new List<Deck>();
-            Decks.Add(new Deck(Decks.Count + 1));
+            Decks.Add(new Deck(1));
         }
     }
 }

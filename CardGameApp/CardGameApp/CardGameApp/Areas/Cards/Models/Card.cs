@@ -10,7 +10,7 @@ namespace CardGameApp.Areas.Cards.Models
     {
         public Rank Rank { get; }
         public Color Color { get; }
-        public bool IsShown { get; }
+        public bool IsShown { get; set; }
 
         public int RankOrderBy
         {

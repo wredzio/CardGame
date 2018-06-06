@@ -13,6 +13,9 @@ using CardGameApp.Utils;
 using CardGameApp.Areas.Boards.Models;
 using CardGameApp.Areas.Boards.ViewModels;
 using CardGameApp.Areas.Boards.Mappers;
+using CardGameApp.Areas.Decks.Mappers;
+using CardGameApp.Areas.Decks.ViewModels;
+using CardGameApp.Areas.Decks.Models;
 
 namespace CardGameApp
 {
@@ -30,6 +33,10 @@ namespace CardGameApp
         {
             services.AddSingleton<Game>();
             services.AddScoped<IMapper<Board, BoardViewModel>, BoardMapper>();
+            services.AddScoped<IMapper<Deck, DeckViewModel>, DeckMapper>();
+            services.AddScoped<IDrawer, Drawer>();
+            services.AddScoped<ISorter, Sorter>();
+            services.AddScoped<IShuffler, Shuffler>();
             services.AddMvc();
         }
 

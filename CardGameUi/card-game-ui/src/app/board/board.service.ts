@@ -6,9 +6,8 @@ import { Deck } from './deck/deck.model';
 
 @Injectable()
 export class BoardService {
-
-  readonly boardUrl = '/api/boards';
-  readonly deckUrl = '/api/decks';
+  private readonly boardUrl = '/api/boards';
+  private readonly deckUrl = '/api/decks';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,11 +15,15 @@ export class BoardService {
     return this.httpClient.post<Board>(this.boardUrl, null);
   }
 
-  public getDeck(id: number): Observable<Deck> {
-    return this.httpClient.get<Deck>(`${this.boardUrl}/deck/${id}`);
+  public getBoard(): Observable<Board> {
+    return this.httpClient.get<Board>(this.boardUrl);
   }
 
   public addNewDeck(): Observable<Deck> {
     return this.httpClient.post<Deck>(this.deckUrl, null);
+  }
+
+  public sort(boardId: number): Observable<Board> {
+    return this.httpClient.post<Board>(`${this.boardUrl}/${boardId}/sort`, null);
   }
 }

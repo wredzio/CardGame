@@ -1,7 +1,7 @@
 
 <div class="row">
-  {{decks}} asd
-  <div *ngFor="let deck of decks" class="col-12">
-    {{deck.id}}
+  <div *ngFor="let deck of decks" class="offset-3 col-6 text-center border p-3 mt-1">
+    <span class="pr-4">Deck id: {{deck.id}}</span>
+    <button class="btn btn-success" (click)="preview(deck.id)">Preview</button>
   </div>
 </div>

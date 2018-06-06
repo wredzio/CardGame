@@ -1,3 +1,8 @@
-<p>
-  deck works!
-</p>
+<div class="row">
+  <div *ngFor="let card of deck.cards" class="col-3">
+    <span *ngIf="card; else reverse">{{card.color}} {{card.rank}}</span>
+    <ng-template #reverse><span>#</span></ng-template>
+  </div>
+  <button class="btn btn-success m-3" (click)="drawNext()">Draw next</button>
+  <button class="btn btn-danger m-3" (click)="shuffle()">Shuffle</button>
+</div>
