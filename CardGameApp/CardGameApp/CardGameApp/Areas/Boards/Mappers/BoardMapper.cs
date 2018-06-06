@@ -1,5 +1,6 @@
 ﻿using CardGameApp.Areas.Boards.Models;
 using CardGameApp.Areas.Boards.ViewModels;
+using CardGameApp.Areas.Cards.Models;
 using CardGameApp.Areas.Cards.ViewModels;
 using CardGameApp.Areas.Decks.Models;
 using CardGameApp.Areas.Decks.ViewModels;
@@ -17,7 +18,11 @@ namespace CardGameApp.Areas.Boards.Mappers
         {
             return new Board()
             {
-                Decks = mapFrom.Decks.Select(deckViewModel => new Deck(deckViewModel.Id)).ToList()
+                Decks = mapFrom.Decks.Select(deckViewModel => 
+                                    new Deck(
+                                        deckViewModel.Id,
+                                        deckViewModel.Cards.Select(card => new Card(card.Rank,card.Color)).ToList()
+                                        )).ToList()
             };
         }
 

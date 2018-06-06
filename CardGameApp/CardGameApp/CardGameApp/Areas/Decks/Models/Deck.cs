@@ -34,11 +34,15 @@ namespace CardGameApp.Areas.Decks.Models
 
         }
 
-        public Deck(int id)
+        public Deck(int id): this(id, null)
         {
-            Id = id;
             Cards = sortedDeck;
         }
-        
+
+        public Deck(int id, List<Card> cards)
+        {
+            Id = id;
+            Cards = cards;
+        }
     }
 }

@@ -7,15 +7,20 @@ import { Deck } from './deck/deck.model';
 @Injectable()
 export class BoardService {
 
-  readonly cardGameUrl = '/api/boards';
+  readonly boardUrl = '/api/boards';
+  readonly deckUrl = '/api/decks';
 
   constructor(private httpClient: HttpClient) { }
 
   public startNewGame(): Observable<Board> {
-    return this.httpClient.post<Board>(this.cardGameUrl, null);
+    return this.httpClient.post<Board>(this.boardUrl, null);
   }
 
   public getDeck(id: number): Observable<Deck> {
-    return this.httpClient.get<Deck>(`${this.cardGameUrl}/deck/${id}`);
+    return this.httpClient.get<Deck>(`${this.boardUrl}/deck/${id}`);
+  }
+
+  public addNewDeck(): Observable<Deck> {
+    return this.httpClient.post<Deck>(this.deckUrl, null);
   }
 }
